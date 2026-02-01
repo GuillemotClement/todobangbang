@@ -1,0 +1,16 @@
+.btn {
+	border: 1px solid black;
+	padding: 5px 5px;
+}
+
+body {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	color: var(--black);
+	font-family: var(--font-text);
+}
+
+main {
+	flex: 1;
+}

@@ -75,5 +75,8 @@
 	},
 	"keywords": [
 		"svelte"
-	]
+	],
+	"dependencies": {
+		"better-auth": "^1.4.18"
+	}
 }
