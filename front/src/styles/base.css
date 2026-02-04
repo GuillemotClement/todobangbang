@@ -3,14 +3,31 @@
 	padding: 5px 5px;
 }
 
+html {
+	font-size: 62.5%;
+}
+
 body {
 	min-height: 100vh;
 	display: flex;
 	flex-direction: column;
 	color: var(--black);
 	font-family: var(--font-text);
+	line-height: 1.5;
+  	font-weight: 400;
+	font-synthesis: none;
+  	text-rendering: optimizeLegibility;
+  	-webkit-font-smoothing: antialiased;
+  	-moz-osx-font-smoothing: grayscale;
+	font-size: 1.6rem;
+
 }
 
 main {
 	flex: 1;
+}
+
+a {
+	color: var(--black);
+	text-decoration: none;
 }
