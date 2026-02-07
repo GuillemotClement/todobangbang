@@ -1,5 +1,55 @@
 import { relations } from "drizzle-orm";
-import { boolean, index, pgTable, text, timestamp } from "drizzle-orm/pg-core";
+import {
+	boolean,
+	index,
+	integer,
+	pgTable,
+	serial,
+	text,
+	timestamp,
+	varchar,
+} from "drizzle-orm/pg-core";
+
+// TASK
+export const tableTask = pgTable("task", {
+	id: serial().primaryKey(),
+	title: varchar({ length: 150 }).notNull(),
+	description: text().notNull(),
+	branche: varchar({ length: 250 }),
+	createdAt: timestamp("created_at").defaultNow().notNull(),
+	updatedAt: timestamp("updated_at")
+		.$onUpdate(() => /* @__PURE__ */ new Date())
+		.notNull(),
+	userId: text("user_id")
+		.notNull()
+		.references(() => user.id),
+	statusId: integer("status_id")
+		.notNull()
+		.default(1)
+		.references(() => tableStatusTask.id),
+	projectId: integer("project_id").references(() => tableProject.id),
+});
+
+export const tableStatusTask = pgTable("task_status", {
+	id: serial().primaryKey(),
+	title: varchar().notNull().unique(),
+});
+
+// Project
+export const tableProject = pgTable("project", {
+	id: serial().primaryKey(),
+	title: varchar({ length: 100 }).notNull(),
+	description: text(),
+	createdAt: timestamp("created_at").defaultNow().notNull(),
+	updatedAt: timestamp("updated_at")
+		.$onUpdate(() => /* @__PURE__ */ new Date())
+		.notNull(),
+	userId: text("user_id")
+		.notNull()
+		.references(() => user.id),
+});
+
+// BETTER AUTH
 
 export const user = pgTable("user", {
 	id: text("id").primaryKey(),

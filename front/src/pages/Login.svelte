@@ -2,6 +2,7 @@
     import { z } from 'zod';
     import { authClient } from '../lib/auth-client';
     import zodUtils from '../lib/zod';
+    import { goto } from '@mateothegreat/svelte5-router';
 
     let errors = $state<Record<string, string[]>>({});
     let loading = $state(false);
@@ -43,7 +44,7 @@
             loading = false;
         }else{
             console.log("Connexion réussie, session:", session);
-            // Rediriger ou mettre à jour l'interface utilisateur après une inscription réussie
+            goto('/');
         }
 
     }
@@ -71,6 +72,6 @@
 
   <div class="">
     <button type="reset" class="btn">Reset</button>
-    <button type="submit" disabled={loading}>Inscription</button>
+    <button type="submit" disabled={loading}>Connexion</button>
   </div>
 </form>

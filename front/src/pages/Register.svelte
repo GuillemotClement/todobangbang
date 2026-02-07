@@ -49,7 +49,7 @@
             loading = false;
         }else{
             console.log("Inscription réussie, session:", session);
-            // Rediriger ou mettre à jour l'interface utilisateur après une inscription réussie
+            goto('/');
         }
 
     }
@@ -82,6 +82,8 @@
     <input type="password" name="confirmPassword" autocomplete="off">
   </div>
 
+  {#if serverError}<p class="server-error">{serverError}</p>{/if}
+
   <div class="">
     <a href="/login">J'ai déjà un compte</a>
   </div>
@@ -91,3 +93,11 @@
     <button type="submit" disabled={loading}>Inscription</button>
   </div>
 </form>
+
+<style>
+  .server-error{
+    color: red;
+    font-weight: bold;
+    font-style: italic;
+  }
+</style>
